@@ -26,9 +26,9 @@ public class AppConfig {
     public DataSource dataSource(){
         DriverManagerDataSource source = new DriverManagerDataSource();
         source.setDriverClassName("com.mysql.jdbc.Driver");
-        source.setUrl("jdbc:mysql://10.30.94.8:3306/dxh_sys?characterEncoding=UTF-8");
-        source.setUsername("dxh");
-        source.setPassword("Dxh2017$$");
+        source.setUrl("jdbc:mysql://192.168.10.1:3306/dxh_sys?characterEncoding=UTF-8");
+        source.setUsername("root");
+        source.setPassword("123456");
         return source;
     }
 
