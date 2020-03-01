@@ -32,6 +32,11 @@ public class AppConfig {
         return source;
     }
 
+    /**
+     * 声明SqlSessionFactory
+     * @param dataSource
+     * @return
+     */
     @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();

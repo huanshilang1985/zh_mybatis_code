@@ -1,1 +1,15 @@
 mybatis + spring + log4j 时，mybatis是没有日志输出的
+mybatis + log4j 时，可以输入日志
+因为spring自带的日志与mybatis的日志不一致
+在mybatis包的LogFactory，定义了日志文件的加载顺序，来构造logConstructor：
+    useSlf4jLogging
+    useCommonsLogging
+    useLog4J2Logging
+    useLog4JLogging
+    useJdkLogging
+    useNoLogging
+在mybatis + log4j 时，前3个会是加载失败，到useLog4JLogging时加载成功会打印日志。
+mybatis + spring + log4j 时，加载useCommonsLogging会成功，使用的是JCL日志，而且SpringJCL+log4j没有反应，因为Spring内部使用的是jul，jul默认打印info+的日志级别
+这是spring5采用的是spring-jcl使用的是jul特性造成的，spring4采用的是jcl使用log4j就可以打印日志
+在mybatis包中JakartaCommonsLoggingImpl类有个方法，isDebugEnabled判断是否允许Debug级别输出日志，正常情况是可以配置的，但spring5是写死的false
+
